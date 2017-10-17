@@ -7,13 +7,18 @@ import {APIResponse} from '../../interfaces/api-response.interface';
   templateUrl: './home.component.html',
   providers: []
 })
+
 export class HomeComponent implements OnInit {
-  constructor(private m_http: HttpClient) {}
+  public list = [];
+  constructor(private m_http: HttpClient) {
+
+  }
 
   ngOnInit() {
     this.m_http.get('/api/test').subscribe(
       (data: APIResponse) => {
         console.log(data);
+        this.list = data.result;
       }, err => {
         console.error(err);
       }

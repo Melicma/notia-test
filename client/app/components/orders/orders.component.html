@@ -17,7 +17,7 @@
       <th class="item item-name">{{ item.name }}</th>
       <th class="item item-packed-by">{{ item.packed_by }}</th>
       <th class="item item-packed-date">{{ item.date_packed }}</th>
-      <th class="item item-packed-date" *ngIf="item.amount"></th>
+      <th class="item item-packed-date" *ngIf="item.amount">Nekompletní</th>
       <th class="item item-packed-date" *ngIf="!item.amount">Expedováno</th>
     </tr>
   </table>

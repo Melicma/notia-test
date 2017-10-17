@@ -25,6 +25,7 @@ export class OrdersComponent implements OnInit {
     this.m_http.get('/api/orders/' + this.m_orderEan).subscribe(
       (data: APIResponse) => {
         this.m_items = data.result;
+        console.log(this.m_items);
       }, err => {
         console.log(err);
       }
@@ -35,7 +36,7 @@ export class OrdersComponent implements OnInit {
     if (item.amount > 1) {
       console.log('Velke mnozstvi');
     } else {
-      this.m_http.put('/api/orders/' + item.ean, [ 1, this.m_userEan, new Date()]).subscribe(
+      this.m_http.put('/api/orders/' + item.ean, [ 1, this.m_userEan.toString()]).subscribe(
         (data: APIResponse) => {
         },
         err => {
@@ -43,7 +44,7 @@ export class OrdersComponent implements OnInit {
         }
       );
     }
-    console.log('Chci balit. ' + item.ean);
+    // window.location.reload();
   }
 
 }

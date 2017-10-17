@@ -22,3 +22,15 @@
     </tr>
   </table>
 </div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="exit()">&times;</span>
+    <form name="amount">
+      <label for="amount" class="my-label">Amount</label>
+      <input id="amount" type="number" class="input-modal" [(ngModel)]="m_amount" name="amount" min="0" max="{{this.m_maxAmount}}">
+    </form>
+    <button (click)="update()">Expedovat</button>
+  </div>
+</div>

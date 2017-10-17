@@ -1,0 +1,47 @@
+.box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(183, 183, 183, 0.76);
+  width: 60%;
+  height: 60%;
+}
+
+.form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form h2 {
+  margin-top: 10px;
+}
+
+.form-login {
+  text-align: center;
+}
+
+.form-login input{
+  border: 2px solid;
+
+}
+
+.my-label {
+  margin-bottom: 8px;
+  display: block;
+}
+
+.button-submit {
+  display: block;
+  font-weight: 400;
+  padding: 6px 12px;
+}
+
+.form-login button{
+  display: table-cell;
+  vertical-align: middle;
+  margin-top: 8px;
+}
+

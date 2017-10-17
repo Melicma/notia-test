@@ -1,0 +1,24 @@
+<div class="orders">
+  <h2>Seznam položek</h2>
+  <table class="order-item-header">
+    <tr class="table-header">
+      <th class="item item-ean">ean</th>
+      <th class="item item-code">kód</th>
+      <th class="item item-amount">množství</th>
+      <th class="item item-name">název</th>
+      <th class="item item-packed-by">zaměstnanec</th>
+      <th class="item item-packed-date">datum expedice</th>
+      <th class="item item-packed-date">status</th>
+    </tr>
+    <tr *ngFor="let item of m_items" class="table-content" (click)="packItem(item)">
+      <th class="item item-ean">{{ item.ean }}</th>
+      <th class="item item-code">{{ item.code }}</th>
+      <th class="item item-amount">{{ item.amount }}</th>
+      <th class="item item-name">{{ item.name }}</th>
+      <th class="item item-packed-by">{{ item.packed_by }}</th>
+      <th class="item item-packed-date">{{ item.date_packed }}</th>
+      <th class="item item-packed-date" *ngIf="item.amount"></th>
+      <th class="item item-packed-date" *ngIf="!item.amount">Expedováno</th>
+    </tr>
+  </table>
+</div>

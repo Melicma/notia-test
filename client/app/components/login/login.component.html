@@ -1,0 +1,12 @@
+<div class="box">
+  <div class="form">
+    <h2>Vložte svůj ean</h2>
+    <div class="form-login">
+      <form name="login">
+        <label for="user-ean" class="my-label">Ean</label>
+        <input id="user-ean" type="text" class="input" [(ngModel)]="m_ean" name="user-ean">
+      </form>
+      <button (click)="login()" class="button-submit" >Login</button>
+    </div>
+  </div>
+</div>

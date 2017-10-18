@@ -8,6 +8,7 @@ const router: Router = Router();
 
 router.get('/:orderEan', CsrfMiddleware, _get);
 router.put('/:itemEan', CsrfMiddleware, _put);
+router.put('/complete/:itemEan', CsrfMiddleware, _putComplete);
 
 // toDO kdyz bude post => hodnota je v req.body!!!
 
@@ -28,6 +29,16 @@ function _put(req: Request, res: Response) {
       Tools.sendJSON(res, true, data);
     },
     err => {
+      Tools.sendJSON(res, false, err);
+    }
+  );
+}
+
+function _putComplete(req: Request, res: Response) {
+  Order.updateOrderData(req.params.itemEan, req.body[0]).subscribe(
+    data => {
+      Tools.sendJSON(res, true, data);
+    }, err => {
       Tools.sendJSON(res, false, err);
     }
   );

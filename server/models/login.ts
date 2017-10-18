@@ -16,3 +16,17 @@ export function getData(transaction?: Transaction): Observable<any> {
     );
   });
 }
+
+export function getUser(ean: number, transaction?: Transaction): Observable<any> {
+  return Observable.create(observer => {
+    Db.query('SELECT * FROM users WHERE ean = $1', [ean], transaction).subscribe(
+      (data: ResultSet) => {
+        observer.next(data.rows);
+        observer.complete();
+      }, err => {
+        observer.error(err);
+        observer.complete();
+      }
+    );
+  });
+}

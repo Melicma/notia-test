@@ -14,4 +14,16 @@ function getData(transaction) {
     });
 }
 exports.getData = getData;
+function getUser(ean, transaction) {
+    return Observable_1.Observable.create(function (observer) {
+        db_1.Db.query('SELECT * FROM users WHERE ean = $1', [ean], transaction).subscribe(function (data) {
+            observer.next(data.rows);
+            observer.complete();
+        }, function (err) {
+            observer.error(err);
+            observer.complete();
+        });
+    });
+}
+exports.getUser = getUser;
 //# sourceMappingURL=login.js.map

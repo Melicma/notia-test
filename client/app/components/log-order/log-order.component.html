@@ -1,3 +1,9 @@
+<div class="user-info">
+  <div class="user-item"><b>Přihlášený uživatel</b></div>
+  <div class="user-item">{{ m_user.firstname }} {{ m_user.lastname }}</div>
+  <div  class="user-item" *ngIf="m_user && m_user.superuser">superuser</div>
+</div>
+
 <div class="box">
   <div class="form">
     <h2>Vložte ean objednávky</h2>

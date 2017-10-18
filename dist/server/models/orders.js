@@ -14,7 +14,7 @@ function getData(ean, transaction) {
     });
 }
 exports.getData = getData;
-function updateData(ean, userEan, amount, transaction) {
+function updateData(ean, amount, userEan, transaction) {
     return Observable_1.Observable.create(function (observer) {
         db_1.Db.query('UPDATE order_items SET packed_by = $2, amount = GREATEST(0, amount - $3), date_packed = $4 WHERE ean = $1', [ean, userEan, amount, new Date()], transaction).subscribe(function (data) {
             observer.next('Dotaz probehl.');
@@ -26,4 +26,16 @@ function updateData(ean, userEan, amount, transaction) {
     });
 }
 exports.updateData = updateData;
+function updateOrderData(ean, userEan, transaction) {
+    return Observable_1.Observable.create(function (observer) {
+        db_1.Db.query('UPDATE orders SET state = $4, date_changed = $1, changed_by = $2 WHERE ean = $3', [new Date(), userEan, ean, 'CLOSED'], transaction).subscribe(function (data) {
+            observer.next('Dotaz update order probehl.');
+            observer.complete();
+        }, function (err) {
+            observer.error(err);
+            observer.complete();
+        });
+    });
+}
+exports.updateOrderData = updateOrderData;
 //# sourceMappingURL=orders.js.map

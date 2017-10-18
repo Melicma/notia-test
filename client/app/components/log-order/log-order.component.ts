@@ -13,6 +13,7 @@ export class LogOrderComponent implements OnInit {
   private m_orderEans = [];
   private m_orderEan = 0;
   private m_userEan = 0;
+  private m_user = {};
   constructor(private m_http: HttpClient, private m_router: Router, private m_actRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -27,6 +28,14 @@ export class LogOrderComponent implements OnInit {
     this.m_actRoute.params.subscribe(
       params => {
         this.m_userEan = params['ean'];
+      }
+    );
+    this.m_http.get('/api/login/' + this.m_userEan).subscribe(
+      (data: APIResponse) => {
+        this.m_user = data.result[0];
+      },
+      err => {
+        console.error(err);
       }
     );
   }

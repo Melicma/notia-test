@@ -74,5 +74,27 @@ tr:nth-child(even) {
   font-weight: 400;
   padding: 6px 12px;
   margin-top: 8px;
+}
 
+
+.user-info {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.user-item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.complete-order {
+  text-align: center;
+}
+
+.complete-order button{
+  font-weight: 400;
+  padding: 6px 12px;
+  margin-top: 8px;
 }

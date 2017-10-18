@@ -7,8 +7,16 @@ var Login = require("../models/login");
 require("rxjs/add/operator/mergeMap");
 var router = express_1.Router();
 router.get('/', csrf_1.CsrfMiddleware, _get);
+router.get('/:userEan', csrf_1.CsrfMiddleware, _getUser);
 function _get(req, res) {
     Login.getData().subscribe(function (data) {
+        tools_1.Tools.sendJSON(res, true, data);
+    }, function (err) {
+        tools_1.Tools.sendJSON(res, false, err);
+    });
+}
+function _getUser(req, res) {
+    Login.getUser(req.params.userEan).subscribe(function (data) {
         tools_1.Tools.sendJSON(res, true, data);
     }, function (err) {
         tools_1.Tools.sendJSON(res, false, err);
